@@ -33,6 +33,13 @@ paths:
       tags:
         - Guild
       summary: Update the settings of a specific guild
+      parameters:
+        - in: path
+          name: guildId
+          schema:
+            type: string
+          required: true
+          description: The ID of the guild you want to update the settings of
       requestBody:
         description: The new guild settings
         required: true
