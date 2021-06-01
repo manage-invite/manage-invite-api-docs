@@ -23,7 +23,7 @@ jobs:
         run: npm install -g swagger-nodegen-cli
 
       - name: Build docs
-        run: sc generate -l openapi -i swagger-docs
+        run: sc generate -l openapi -i swagger-docs.yaml
       
       - name: Commit files
         run: |
