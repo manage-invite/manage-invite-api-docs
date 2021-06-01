@@ -156,6 +156,126 @@
           }
         }
       }
+    },
+    "/guilds/{guildId}/blacklisted" : {
+      "get" : {
+        "tags" : [ "Guild" ],
+        "summary" : "Returns the blacklisted users of the guild",
+        "parameters" : [ {
+          "name" : "guildId",
+          "in" : "path",
+          "description" : "The ID of the guild you want to get the blacklisted users of",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "The guild blacklisted users",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Guild" ],
+        "summary" : "Blacklists new users",
+        "parameters" : [ {
+          "name" : "guildId",
+          "in" : "path",
+          "description" : "The ID of the guild you want to blacklist the user on",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "requestBody" : {
+          "description" : "The IDs of the users you want to blacklist",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "string"
+                }
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "The guild blacklisted users",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Guild" ],
+        "summary" : "Unblacklist blacklisted users",
+        "parameters" : [ {
+          "name" : "guildId",
+          "in" : "path",
+          "description" : "The ID of the guild you want to un-blacklist the user on",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "requestBody" : {
+          "description" : "The IDs of the users you want to un-blacklist",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "string"
+                }
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "The guild blacklisted users",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components" : {
