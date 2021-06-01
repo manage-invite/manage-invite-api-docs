@@ -277,6 +277,68 @@
         }
       }
     },
+    "/guilds/{guildId}/storages" : {
+      "get" : {
+        "tags" : [ "Guilds" ],
+        "summary" : "Returns the guild storages of the guild",
+        "parameters" : [ {
+          "name" : "guildId",
+          "in" : "path",
+          "description" : "The ID of the guild you want to get the storages of",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "The guild storages",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/GuildStorage"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Guilds" ],
+        "summary" : "Create a new guild storage",
+        "parameters" : [ {
+          "name" : "guildId",
+          "in" : "path",
+          "description" : "The ID of the guild you want to change the storage of",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "The new guild storage",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/GuildStorage"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/guilds/{guildId}/leaderboard" : {
       "get" : {
         "tags" : [ "Guilds" ],
