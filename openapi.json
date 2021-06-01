@@ -18,7 +18,7 @@
   "paths" : {
     "/guilds/{guildId}/settings" : {
       "get" : {
-        "tags" : [ "Guild" ],
+        "tags" : [ "Guilds" ],
         "summary" : "Returns the settings of a specific guild",
         "parameters" : [ {
           "name" : "guildId",
@@ -45,7 +45,7 @@
         }
       },
       "post" : {
-        "tags" : [ "Guild" ],
+        "tags" : [ "Guilds" ],
         "summary" : "Update the settings of a specific guild",
         "parameters" : [ {
           "name" : "guildId",
@@ -117,7 +117,7 @@
     },
     "/guilds/{guildId}/plugins/{pluginName}" : {
       "post" : {
-        "tags" : [ "Guild" ],
+        "tags" : [ "Guilds" ],
         "summary" : "Update a specific plugin of a guild",
         "parameters" : [ {
           "name" : "guildId",
@@ -159,7 +159,7 @@
     },
     "/guilds/{guildId}/blacklisted" : {
       "get" : {
-        "tags" : [ "Guild" ],
+        "tags" : [ "Guilds" ],
         "summary" : "Returns the blacklisted users of the guild",
         "parameters" : [ {
           "name" : "guildId",
@@ -189,7 +189,7 @@
         }
       },
       "post" : {
-        "tags" : [ "Guild" ],
+        "tags" : [ "Guilds" ],
         "summary" : "Blacklists new users",
         "parameters" : [ {
           "name" : "guildId",
@@ -233,7 +233,7 @@
         }
       },
       "delete" : {
-        "tags" : [ "Guild" ],
+        "tags" : [ "Guilds" ],
         "summary" : "Unblacklist blacklisted users",
         "parameters" : [ {
           "name" : "guildId",
@@ -279,7 +279,7 @@
     },
     "/guilds/{guildId}/leaderboard" : {
       "get" : {
-        "tags" : [ "Guild" ],
+        "tags" : [ "Guilds" ],
         "summary" : "Returns the guild leaderboard",
         "parameters" : [ {
           "name" : "guildId",
@@ -311,7 +311,7 @@
     },
     "/guilds/{guildId}/subscriptions" : {
       "get" : {
-        "tags" : [ "Guild" ],
+        "tags" : [ "Guilds" ],
         "summary" : "Returns the guild subscriptions",
         "parameters" : [ {
           "name" : "guildId",
@@ -343,8 +343,8 @@
     },
     "/subscriptions/{subId}/payments" : {
       "get" : {
-        "tags" : [ "Subscription" ],
-        "summary" : "Returns the subscriptions payments",
+        "tags" : [ "Subscriptions" ],
+        "summary" : "Returns the subscription payments",
         "parameters" : [ {
           "name" : "subId",
           "in" : "path",
@@ -366,6 +366,131 @@
                   "items" : {
                     "$ref" : "#/components/schemas/SubscriptionPayment"
                   }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/guilds/{guildId}/members/{memberId}" : {
+      "get" : {
+        "tags" : [ "Members" ],
+        "summary" : "Returns the guild member invites",
+        "parameters" : [ {
+          "name" : "guildId",
+          "in" : "path",
+          "description" : "The ID of the guild of the member",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "memberId",
+          "in" : "path",
+          "description" : "The ID of the user you want to get the data of",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "The guild member data",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/GuildMember"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Members" ],
+        "summary" : "Add invites to a member",
+        "parameters" : [ {
+          "name" : "guildId",
+          "in" : "path",
+          "description" : "The ID of the guild of the member",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "memberId",
+          "in" : "path",
+          "description" : "The ID of the user you want to add invites to",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/body"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "The new guild member data",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/GuildMember"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/guilds/{guildId}/members/{memberId}/events" : {
+      "get" : {
+        "tags" : [ "Members" ],
+        "summary" : "Returns the guild member events",
+        "parameters" : [ {
+          "name" : "guildId",
+          "in" : "path",
+          "description" : "The ID of the guild of the member",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "memberId",
+          "in" : "path",
+          "description" : "The ID of the user you want to get the events of",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "The guild member events",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/GuildMemberEvent"
                 }
               }
             }
@@ -673,6 +798,20 @@
           },
           "subLabel" : {
             "type" : "string"
+          }
+        }
+      },
+      "body" : {
+        "properties" : {
+          "number" : {
+            "type" : "number",
+            "description" : "The number of invites to add (use negative to remove)",
+            "example" : 10
+          },
+          "type" : {
+            "type" : "string",
+            "description" : "The type of invites to add/remove (leave, fake, regular or bonus)",
+            "example" : "bonus"
           }
         }
       }
