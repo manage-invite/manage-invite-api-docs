@@ -276,6 +276,102 @@
           }
         }
       }
+    },
+    "/guilds/{guildId}/leaderboard" : {
+      "get" : {
+        "tags" : [ "Guild" ],
+        "summary" : "Returns the guild leaderboard",
+        "parameters" : [ {
+          "name" : "guildId",
+          "in" : "path",
+          "description" : "The ID of the guild you want to get the leaderboard of",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "The guild leaderboard",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/UserLeaderboardEntry"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/guilds/{guildId}/subscriptions" : {
+      "get" : {
+        "tags" : [ "Guild" ],
+        "summary" : "Returns the guild subscriptions",
+        "parameters" : [ {
+          "name" : "guildId",
+          "in" : "path",
+          "description" : "The ID of the guild you want to get the subscriptions of",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "The guild subscriptions",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/GuildSubscription"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/subscriptions/{subId}/payments" : {
+      "get" : {
+        "tags" : [ "Subscription" ],
+        "summary" : "Returns the subscriptions payments",
+        "parameters" : [ {
+          "name" : "subId",
+          "in" : "path",
+          "description" : "The ID of the subscription you want to get the payments of",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "The subscription payments",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/SubscriptionPayment"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components" : {
