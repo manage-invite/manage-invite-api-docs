@@ -5,8 +5,14 @@ info:
   description: The official API of the [ManageInvite Discord BOT](https://manage-invite.xyz).
   version: 1.0.0
 
+security:
+  - bearerAuth: []
+
 servers:
   - url: https://api.manage-invite.xyz
+    description: Officiel ManageInvite Server
+  - url: http://localhost:3300
+    description: Localhost server (for development)
 
 paths:
   /guilds/{guildId}/settings:
@@ -103,6 +109,11 @@ paths:
                   $ref: "#/components/schemas/GuildPlugin"
 
 components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
   schemas:
     CountGuildInvites:
       type: object
