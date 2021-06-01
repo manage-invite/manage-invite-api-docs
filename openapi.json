@@ -6,7 +6,14 @@
     "version" : "1.0.0"
   },
   "servers" : [ {
-    "url" : "https://api.manage-invite.xyz"
+    "url" : "https://api.manage-invite.xyz",
+    "description" : "Officiel ManageInvite Server"
+  }, {
+    "url" : "http://localhost:3300",
+    "description" : "Localhost server (for development)"
+  } ],
+  "security" : [ {
+    "bearerAuth" : [ ]
   } ],
   "paths" : {
     "/guilds/{guildId}/settings" : {
@@ -452,6 +459,13 @@
             "type" : "string"
           }
         }
+      }
+    },
+    "securitySchemes" : {
+      "bearerAuth" : {
+        "type" : "http",
+        "scheme" : "bearer",
+        "bearerFormat" : "JWT"
       }
     }
   }
