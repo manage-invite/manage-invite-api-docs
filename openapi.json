@@ -1,69 +1,74 @@
 {
-  "openapi": "3.0.0",
-  "info": {
-    "title": "ManageInvite API",
-    "description": "The official API of the [ManageInvite Discord BOT](https://manage-invite.xyz).",
-    "version": "1.0.0"
+  "openapi" : "3.0.0",
+  "info" : {
+    "title" : "ManageInvite API",
+    "description" : "The official API of the [ManageInvite Discord BOT](https://manage-invite.xyz).",
+    "version" : "1.0.0"
   },
-  "servers": [
-    {
-      "url": "https://api.manage-invite.xyz"
-    }
-  ],
-  "paths": {
-    "/guilds/{guildId}/settings": {
-      "get": {
-        "tags": [
-          "Guild"
-        ],
-        "summary": "Returns the settings of a specific guild",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "guildId",
-            "schema": {
-              "type": "string"
-            },
-            "required": true,
-            "description": "The ID of the guild you want to get the settings of"
+  "servers" : [ {
+    "url" : "https://api.manage-invite.xyz"
+  } ],
+  "paths" : {
+    "/guilds/{guildId}/settings" : {
+      "get" : {
+        "tags" : [ "Guild" ],
+        "summary" : "Returns the settings of a specific guild",
+        "parameters" : [ {
+          "name" : "guildId",
+          "in" : "path",
+          "description" : "The ID of the guild you want to get the settings of",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
           }
-        ],
-        "responses": {
-          "200": {
-            "description": "The guild settings",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/GuildSettings"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "The guild settings",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/GuildSettings"
                 }
               }
             }
           }
         }
       },
-      "post": {
-        "tags": [
-          "Guild"
-        ],
-        "summary": "Update the settings of a specific guild",
-        "requestBody": {
-          "description": "The new guild settings",
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/GuildSettings"
+      "post" : {
+        "tags" : [ "Guild" ],
+        "summary" : "Update the settings of a specific guild",
+        "parameters" : [ {
+          "name" : "guildId",
+          "in" : "path",
+          "description" : "The ID of the guild you want to update the settings of",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "requestBody" : {
+          "description" : "The new guild settings",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/GuildSettings"
               }
             }
-          }
+          },
+          "required" : true
         },
-        "responses": {
-          "200": {
-            "description": "The updated guild settings",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/GuildSettings"
+        "responses" : {
+          "200" : {
+            "description" : "The updated guild settings",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/GuildSettings"
                 }
               }
             }
@@ -71,32 +76,30 @@
         }
       }
     },
-    "/guilds/{guildId}/plugins": {
-      "get": {
-        "tags": [
-          "Guild"
-        ],
-        "summary": "Get the plugins of a specific guild",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "guildId",
-            "schema": {
-              "type": "string"
-            },
-            "required": true,
-            "description": "The ID of the guild you want to get the plugins of"
+    "/guilds/{guildId}/plugins" : {
+      "get" : {
+        "tags" : [ "Guild" ],
+        "summary" : "Returns the plugins of a specific guild",
+        "parameters" : [ {
+          "name" : "guildId",
+          "in" : "path",
+          "description" : "The ID of the guild you want to get the plugins of",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
           }
-        ],
-        "responses": {
-          "200": {
-            "description": "The guild plugins",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/GuildPlugin"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "The guild plugins",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/GuildPlugin"
                   }
                 }
               }
@@ -105,41 +108,40 @@
         }
       }
     },
-    "/guilds/{guildId}/plugins/{pluginName}": {
-      "post": {
-        "tags": [
-          "Guild"
-        ],
-        "summary": "Update a specific plugin of a guild",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "guildId",
-            "schema": {
-              "type": "string"
-            },
-            "required": true,
-            "description": "The ID of the guild you want to update the plugin of"
-          },
-          {
-            "in": "path",
-            "name": "pluginName",
-            "schema": {
-              "type": "string"
-            },
-            "required": true,
-            "description": "The name of the plugin you want to update"
+    "/guilds/{guildId}/plugins/{pluginName}" : {
+      "post" : {
+        "tags" : [ "Guild" ],
+        "summary" : "Update a specific plugin of a guild",
+        "parameters" : [ {
+          "name" : "guildId",
+          "in" : "path",
+          "description" : "The ID of the guild you want to update the plugin of",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
           }
-        ],
-        "responses": {
-          "200": {
-            "description": "The new guild plugins",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/GuildPlugin"
+        }, {
+          "name" : "pluginName",
+          "in" : "path",
+          "description" : "The name of the plugin you want to update",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "The new guild plugins",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/GuildPlugin"
                   }
                 }
               }
@@ -149,305 +151,305 @@
       }
     }
   },
-  "components": {
-    "schemas": {
-      "CountGuildInvites": {
-        "type": "object",
-        "properties": {
-          "leaves": {
-            "type": "integer"
+  "components" : {
+    "schemas" : {
+      "CountGuildInvites" : {
+        "type" : "object",
+        "properties" : {
+          "leaves" : {
+            "type" : "integer"
           },
-          "regular": {
-            "type": "integer"
+          "regular" : {
+            "type" : "integer"
           },
-          "fake": {
-            "type": "integer"
+          "fake" : {
+            "type" : "integer"
           },
-          "bonus": {
-            "type": "integer"
+          "bonus" : {
+            "type" : "integer"
           }
         }
       },
-      "GuildStorage": {
-        "type": "object",
-        "properties": {
-          "guildID": {
-            "type": "string"
+      "GuildStorage" : {
+        "type" : "object",
+        "properties" : {
+          "guildID" : {
+            "type" : "string"
           },
-          "storageID": {
-            "type": "string"
+          "storageID" : {
+            "type" : "string"
           },
-          "createdAt": {
-            "type": "integer"
+          "createdAt" : {
+            "type" : "integer"
           }
         }
       },
-      "GuildSubscription": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string"
+      "GuildSubscription" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string"
           },
-          "expiresAt": {
-            "type": "string"
+          "expiresAt" : {
+            "type" : "string"
           },
-          "createdAt": {
-            "type": "string"
+          "createdAt" : {
+            "type" : "string"
           },
-          "subLabel": {
-            "type": "string"
+          "subLabel" : {
+            "type" : "string"
           },
-          "guildsCount": {
-            "type": "integer"
+          "guildsCount" : {
+            "type" : "integer"
           },
-          "patreonUserID": {
-            "type": "string"
+          "patreonUserID" : {
+            "type" : "string"
           },
-          "cancelled": {
-            "type": "boolean"
+          "cancelled" : {
+            "type" : "boolean"
           },
-          "subInvalidated": {
-            "type": "boolean"
+          "subInvalidated" : {
+            "type" : "boolean"
           }
         }
       },
-      "SubscriptionPayment": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string"
+      "SubscriptionPayment" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string"
           },
-          "payerDiscordID": {
-            "type": "string"
+          "payerDiscordID" : {
+            "type" : "string"
           },
-          "amount": {
-            "type": "integer"
+          "amount" : {
+            "type" : "integer"
           },
-          "createdAt": {
-            "type": "string"
+          "createdAt" : {
+            "type" : "string"
           },
-          "type": {
-            "type": "string"
+          "type" : {
+            "type" : "string"
           },
-          "transactionID": {
-            "type": "string"
+          "transactionID" : {
+            "type" : "string"
           },
-          "details": {
-            "type": "object"
+          "details" : {
+            "type" : "object"
           },
-          "modDiscordID": {
-            "type": "string"
+          "modDiscordID" : {
+            "type" : "string"
           },
-          "signupID": {
-            "type": "string"
+          "signupID" : {
+            "type" : "string"
           },
-          "payerEmail": {
-            "type": "string"
+          "payerEmail" : {
+            "type" : "string"
           },
-          "payerDiscordUsername": {
-            "type": "string"
+          "payerDiscordUsername" : {
+            "type" : "string"
           }
         }
       },
-      "GuildSettings": {
-        "type": "object",
-        "properties": {
-          "guildID": {
-            "type": "string"
+      "GuildSettings" : {
+        "type" : "object",
+        "properties" : {
+          "guildID" : {
+            "type" : "string"
           },
-          "storageID": {
-            "type": "string"
+          "storageID" : {
+            "type" : "string"
           },
-          "language": {
-            "type": "string"
+          "language" : {
+            "type" : "string"
           },
-          "prefix": {
-            "type": "string"
+          "prefix" : {
+            "type" : "string"
           },
-          "keepRanks": {
-            "type": "boolean"
+          "keepRanks" : {
+            "type" : "boolean"
           },
-          "stackedRanks": {
-            "type": "boolean"
+          "stackedRanks" : {
+            "type" : "boolean"
           },
-          "cmdChannel": {
-            "type": "string"
+          "cmdChannel" : {
+            "type" : "string"
           },
-          "fakeThreshold": {
-            "type": "integer"
+          "fakeThreshold" : {
+            "type" : "integer"
           }
         }
       },
-      "PremiumStatus": {
-        "type": "object",
-        "properties": {
-          "guildID": {
-            "type": "string"
+      "PremiumStatus" : {
+        "type" : "object",
+        "properties" : {
+          "guildID" : {
+            "type" : "string"
           },
-          "isPremium": {
-            "type": "boolean"
+          "isPremium" : {
+            "type" : "boolean"
           },
-          "isTrial": {
-            "type": "boolean"
+          "isTrial" : {
+            "type" : "boolean"
           }
         }
       },
-      "GuildSubscriptionStatus": {
-        "type": "object",
-        "properties": {
-          "isPayPal": {
-            "type": "boolean"
+      "GuildSubscriptionStatus" : {
+        "type" : "object",
+        "properties" : {
+          "isPayPal" : {
+            "type" : "boolean"
           },
-          "isCancelled": {
-            "type": "boolean"
+          "isCancelled" : {
+            "type" : "boolean"
           }
         }
       },
-      "GuildRank": {
-        "type": "object",
-        "properties": {
-          "guildID": {
-            "type": "string"
+      "GuildRank" : {
+        "type" : "object",
+        "properties" : {
+          "guildID" : {
+            "type" : "string"
           },
-          "roleID": {
-            "type": "string"
+          "roleID" : {
+            "type" : "string"
           },
-          "inviteCount": {
-            "type": "integer"
+          "inviteCount" : {
+            "type" : "integer"
           }
         }
       },
-      "GuildPlugin": {
-        "type": "object",
-        "properties": {
-          "guildID": {
-            "type": "string"
+      "GuildPlugin" : {
+        "type" : "object",
+        "properties" : {
+          "guildID" : {
+            "type" : "string"
           },
-          "pluginName": {
-            "type": "string"
+          "pluginName" : {
+            "type" : "string"
           },
-          "pluginData": {
-            "type": "object"
+          "pluginData" : {
+            "type" : "object"
           }
         }
       },
-      "UserLeaderboardEntry": {
-        "type": "object",
-        "properties": {
-          "userID": {
-            "type": "string"
+      "UserLeaderboardEntry" : {
+        "type" : "object",
+        "properties" : {
+          "userID" : {
+            "type" : "string"
           },
-          "invites": {
-            "type": "integer"
+          "invites" : {
+            "type" : "integer"
           },
-          "regular": {
-            "type": "integer"
+          "regular" : {
+            "type" : "integer"
           },
-          "leaves": {
-            "type": "integer"
+          "leaves" : {
+            "type" : "integer"
           },
-          "bonus": {
-            "type": "integer"
+          "bonus" : {
+            "type" : "integer"
           },
-          "fake": {
-            "type": "integer"
+          "fake" : {
+            "type" : "integer"
           }
         }
       },
-      "GuildMember": {
-        "type": "object",
-        "properties": {
-          "userID": {
-            "type": "string"
+      "GuildMember" : {
+        "type" : "object",
+        "properties" : {
+          "userID" : {
+            "type" : "string"
           },
-          "guildID": {
-            "type": "string"
+          "guildID" : {
+            "type" : "string"
           },
-          "storageID": {
-            "type": "string"
+          "storageID" : {
+            "type" : "string"
           },
-          "fake": {
-            "type": "integer"
+          "fake" : {
+            "type" : "integer"
           },
-          "leaves": {
-            "type": "integer"
+          "leaves" : {
+            "type" : "integer"
           },
-          "bonus": {
-            "type": "integer"
+          "bonus" : {
+            "type" : "integer"
           },
-          "regular": {
-            "type": "integer"
+          "regular" : {
+            "type" : "integer"
           },
-          "notCreated": {
-            "type": "boolean"
+          "notCreated" : {
+            "type" : "boolean"
           },
-          "invites": {
-            "type": "integer"
+          "invites" : {
+            "type" : "integer"
           }
         }
       },
-      "GuildMemberEvent": {
-        "type": "object",
-        "properties": {
-          "userID": {
-            "type": "string"
+      "GuildMemberEvent" : {
+        "type" : "object",
+        "properties" : {
+          "userID" : {
+            "type" : "string"
           },
-          "guildID": {
-            "type": "string"
+          "guildID" : {
+            "type" : "string"
           },
-          "eventType": {
-            "type": "string",
-            "example": "join, leave"
+          "eventType" : {
+            "type" : "string",
+            "example" : "join, leave"
           },
-          "eventDate": {
-            "type": "integer"
+          "eventDate" : {
+            "type" : "integer"
           },
-          "joinType": {
-            "type": "string",
-            "example": "normal, oauth, vanity, perm, unknown"
+          "joinType" : {
+            "type" : "string",
+            "example" : "normal, oauth, vanity, perm, unknown"
           },
-          "inviterID": {
-            "type": "string"
+          "inviterID" : {
+            "type" : "string"
           },
-          "inviteData": {
-            "type": "object"
+          "inviteData" : {
+            "type" : "object"
           },
-          "storageID": {
-            "type": "string"
+          "storageID" : {
+            "type" : "string"
           },
-          "joinFake": {
-            "type": "boolean"
+          "joinFake" : {
+            "type" : "boolean"
           }
         }
       },
-      "TransactionData": {
-        "type": "object",
-        "properties": {
-          "subID": {
-            "type": "string"
+      "TransactionData" : {
+        "type" : "object",
+        "properties" : {
+          "subID" : {
+            "type" : "string"
           },
-          "guildID": {
-            "type": "string"
+          "guildID" : {
+            "type" : "string"
           }
         }
       },
-      "NewlyCancelledPayment": {
-        "type": "object",
-        "properties": {
-          "payerDiscordID": {
-            "type": "string"
+      "NewlyCancelledPayment" : {
+        "type" : "object",
+        "properties" : {
+          "payerDiscordID" : {
+            "type" : "string"
           },
-          "subID": {
-            "type": "string"
+          "subID" : {
+            "type" : "string"
           },
-          "paymentID": {
-            "type": "string"
+          "paymentID" : {
+            "type" : "string"
           },
-          "guildID": {
-            "type": "string"
+          "guildID" : {
+            "type" : "string"
           },
-          "subLabel": {
-            "type": "string"
+          "subLabel" : {
+            "type" : "string"
           }
         }
       }
