@@ -12,6 +12,8 @@ servers:
 paths:
   /guilds/{guildId}/settings:
     get:
+      tags:
+        - Guild
       summary: Returns the settings of a specific guild
       parameters:
         - in: path
@@ -27,6 +29,72 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GuildSettings'
+    post:
+      tags:
+        - Guild
+      summary: Update the settings of a specific guild
+      requestBody:
+        description: The new guild settings
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GuildSettings'
+      responses:
+        '200':
+          description: The updated guild settings
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GuildSettings'
+  /guilds/{guildId}/plugins:
+    get:
+      tags:
+        - Guild
+      summary: Get the plugins of a specific guild
+      parameters:
+        - in: path
+          name: guildId
+          schema:
+            type: string
+          required: true
+          description: The ID of the guild you want to get the plugins of
+      responses:
+        '200':
+          description: The guild plugins
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/GuildPlugin'
+  /guilds/{guildId}/plugins/{pluginName}:
+    post:
+      tags:
+        - Guild
+      summary: Update a specific plugin of a guild
+      parameters:
+        - in: path
+          name: guildId
+          schema:
+            type: string
+          required: true
+          description: The ID of the guild you want to update the plugin of
+        - in: path
+          name: pluginName
+          schema:
+            type: string
+          required: true
+          description: The name of the plugin you want to update
+      responses:
+        '200':
+          description: The new guild plugins
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/GuildPlugin'
 
 components:
   schemas:
