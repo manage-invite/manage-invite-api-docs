@@ -107,6 +107,85 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/GuildPlugin"
+  /guilds/{guildId}/blacklisted:
+    get:
+      tags:
+        - Guild
+      summary: Returns the blacklisted users of the guild
+      parameters:
+        - in: path
+          name: guildId
+          schema:
+            type: string
+          required: true
+          description: The ID of the guild you want to get the blacklisted users of
+      responses:
+        "200":
+          description: The guild blacklisted users
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+    post:
+      tags:
+        - Guild
+      summary: Blacklists new users
+      parameters:
+        - in: path
+          name: guildId
+          schema:
+            type: string
+          required: true
+          description: The ID of the guild you want to blacklist the user on
+      requestBody:
+        description: The IDs of the users you want to blacklist
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: string
+      responses:
+        "200":
+          description: The guild blacklisted users
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+    delete:
+      tags:
+        - Guild
+      summary: Unblacklist blacklisted users
+      parameters:
+        - in: path
+          name: guildId
+          schema:
+            type: string
+          required: true
+          description: The ID of the guild you want to un-blacklist the user on
+      requestBody:
+        description: The IDs of the users you want to un-blacklist
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: string
+      responses:
+        "200":
+          description: The guild blacklisted users
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
 
 components:
   securitySchemes:
