@@ -439,7 +439,7 @@
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/body"
+                "$ref" : "#/components/schemas/GuildMemberInvitesUpdate"
               }
             }
           },
@@ -714,7 +714,8 @@
           }
         }
       },
-      "body" : {
+      "GuildMemberInvitesUpdate" : {
+        "type" : "object",
         "properties" : {
           "number" : {
             "type" : "number",
