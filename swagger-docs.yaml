@@ -62,7 +62,7 @@ paths:
   /guilds/{guildId}/plugins:
     get:
       tags:
-        - Guild
+        - Guilds
       summary: Returns the plugins of a specific guild
       parameters:
         - in: path
