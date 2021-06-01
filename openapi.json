@@ -85,7 +85,7 @@
     },
     "/guilds/{guildId}/plugins" : {
       "get" : {
-        "tags" : [ "Guild" ],
+        "tags" : [ "Guilds" ],
         "summary" : "Returns the plugins of a specific guild",
         "parameters" : [ {
           "name" : "guildId",
