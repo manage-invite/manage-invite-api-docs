@@ -1,8 +1,11 @@
 name: Build Docs
 on:
   push:
+    paths:
+      - 'swagger-docs.yaml'
     branches:
       - 'main'
+
 jobs:
   docs:
     name: Documentation
@@ -26,7 +29,7 @@ jobs:
         run: |
           git config --local user.email "androz2091@gmail.com"
           git config --local user.name "Androz2091 - Build"
-          git add .
+          git add openapi.json
           git commit -m "Build Swagger documentation"
 
       - name: Push changes
