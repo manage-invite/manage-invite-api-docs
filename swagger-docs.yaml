@@ -296,15 +296,7 @@ paths:
         content:
           application/json:
             schema:
-              properties:
-                number:
-                  type: number
-                  example: 10
-                  description: The number of invites to add (use negative to remove)
-                type:
-                  type: string
-                  example: bonus
-                  description: The type of invites to add/remove (leave, fake, regular or bonus)
+              $ref: "#/components/schemas/GuildMemberInvitesUpdate"
       responses:
         "200":
           description: The new guild member data
@@ -485,3 +477,14 @@ components:
           type: string
         joinFake:
           type: boolean
+    GuildMemberInvitesUpdate:
+      type: object
+      properties:
+        number:
+          type: number
+          example: 10
+          description: The number of invites to add (use negative to remove)
+        type:
+          type: string
+          example: bonus
+          description: The type of invites to add/remove (leave, fake, regular or bonus)
