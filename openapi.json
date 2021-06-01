@@ -501,23 +501,6 @@
   },
   "components" : {
     "schemas" : {
-      "CountGuildInvites" : {
-        "type" : "object",
-        "properties" : {
-          "leaves" : {
-            "type" : "integer"
-          },
-          "regular" : {
-            "type" : "integer"
-          },
-          "fake" : {
-            "type" : "integer"
-          },
-          "bonus" : {
-            "type" : "integer"
-          }
-        }
-      },
       "GuildStorage" : {
         "type" : "object",
         "properties" : {
@@ -628,45 +611,6 @@
           }
         }
       },
-      "PremiumStatus" : {
-        "type" : "object",
-        "properties" : {
-          "guildID" : {
-            "type" : "string"
-          },
-          "isPremium" : {
-            "type" : "boolean"
-          },
-          "isTrial" : {
-            "type" : "boolean"
-          }
-        }
-      },
-      "GuildSubscriptionStatus" : {
-        "type" : "object",
-        "properties" : {
-          "isPayPal" : {
-            "type" : "boolean"
-          },
-          "isCancelled" : {
-            "type" : "boolean"
-          }
-        }
-      },
-      "GuildRank" : {
-        "type" : "object",
-        "properties" : {
-          "guildID" : {
-            "type" : "string"
-          },
-          "roleID" : {
-            "type" : "string"
-          },
-          "inviteCount" : {
-            "type" : "integer"
-          }
-        }
-      },
       "GuildPlugin" : {
         "type" : "object",
         "properties" : {
@@ -767,37 +711,6 @@
           },
           "joinFake" : {
             "type" : "boolean"
-          }
-        }
-      },
-      "TransactionData" : {
-        "type" : "object",
-        "properties" : {
-          "subID" : {
-            "type" : "string"
-          },
-          "guildID" : {
-            "type" : "string"
-          }
-        }
-      },
-      "NewlyCancelledPayment" : {
-        "type" : "object",
-        "properties" : {
-          "payerDiscordID" : {
-            "type" : "string"
-          },
-          "subID" : {
-            "type" : "string"
-          },
-          "paymentID" : {
-            "type" : "string"
-          },
-          "guildID" : {
-            "type" : "string"
-          },
-          "subLabel" : {
-            "type" : "string"
           }
         }
       },
