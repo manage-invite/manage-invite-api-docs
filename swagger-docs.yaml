@@ -57,7 +57,7 @@ paths:
     get:
       tags:
         - Guild
-      summary: Get the plugins of a specific guild
+      summary: Returns the plugins of a specific guild
       parameters:
         - in: path
           name: guildId
