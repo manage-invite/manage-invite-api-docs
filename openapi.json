@@ -707,6 +707,15 @@
           },
           "fake" : {
             "type" : "integer"
+          },
+          "username" : {
+            "type" : "string"
+          },
+          "discriminator" : {
+            "type" : "string"
+          },
+          "avatarURL" : {
+            "type" : "string"
           }
         }
       },
