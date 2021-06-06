@@ -128,7 +128,7 @@ paths:
                 type: array
                 items:
                   type: string
-  /guilds/{guildId}/blacklisted/{memberId}:
+  /guilds/{guildId}/blacklisted/{userId}:
     post:
       tags:
         - Guilds
@@ -141,7 +141,7 @@ paths:
           required: true
           description: The ID of the guild you want to blacklist the user on
         - in: path
-          name: memberId
+          name: userId
           schema:
             type: string
           required: true
@@ -167,7 +167,7 @@ paths:
           required: true
           description: The ID of the guild you want to un-blacklist the user on
         - in: path
-          name: memberId
+          name: userId
           schema:
             type: string
           required: true
