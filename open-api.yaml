@@ -128,6 +128,7 @@ paths:
                 type: array
                 items:
                   type: string
+  /guilds/{guildId}/blacklisted/{memberId}:
     post:
       tags:
         - Guilds
