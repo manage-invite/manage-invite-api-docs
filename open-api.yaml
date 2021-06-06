@@ -139,18 +139,12 @@ paths:
             type: string
           required: true
           description: The ID of the guild you want to blacklist the user on
-      requestBody:
-        description: The IDs of the users you want to blacklist
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                - users:
-                  type: array
-                  items:
-                    type: string
+        - in: path
+          name: memberId
+          schema:
+            type: string
+          required: true
+          description: The ID of the user you want to blacklist
       responses:
         "200":
           description: The guild blacklisted users
@@ -171,18 +165,12 @@ paths:
             type: string
           required: true
           description: The ID of the guild you want to un-blacklist the user on
-      requestBody:
-        description: The IDs of the users you want to un-blacklist
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                - users:
-                  type: array
-                  items:
-                    type: string
+        - in: path
+          name: memberId
+          schema:
+            type: string
+          required: true
+          description: The ID of the user you want to un-blacklist
       responses:
         "200":
           description: The guild blacklisted users
