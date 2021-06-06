@@ -145,9 +145,12 @@ paths:
         content:
           application/json:
             schema:
-              type: array
-              items:
-                type: string
+              type: object
+              properties:
+                - users:
+                  type: array
+                  items:
+                    type: string
       responses:
         "200":
           description: The guild blacklisted users
@@ -174,9 +177,12 @@ paths:
         content:
           application/json:
             schema:
-              type: array
-              items:
-                type: string
+              type: object
+              properties:
+                - users:
+                  type: array
+                  items:
+                    type: string
       responses:
         "200":
           description: The guild blacklisted users
