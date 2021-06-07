@@ -248,48 +248,6 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/UserLeaderboardEntry"
-  /guilds/{guildId}/subscriptions:
-    get:
-      tags:
-        - Guilds
-      summary: Returns the guild subscriptions
-      parameters:
-        - in: path
-          name: guildId
-          schema:
-            type: string
-          required: true
-          description: The ID of the guild you want to get the subscriptions of
-      responses:
-        "200":
-          description: The guild subscriptions
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: "#/components/schemas/GuildSubscription"
-  /subscriptions/{subId}/payments:
-    get:
-      tags:
-        - Subscriptions
-      summary: Returns the subscription payments
-      parameters:
-        - in: path
-          name: subId
-          schema:
-            type: string
-          required: true
-          description: The ID of the subscription you want to get the payments of
-      responses:
-        "200":
-          description: The subscription payments
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: "#/components/schemas/SubscriptionPayment"
   /guilds/{guildId}/members/{memberId}:
     get:
       tags:
@@ -387,50 +345,6 @@ components:
           type: string
         createdAt:
           type: integer
-    GuildSubscription:
-      type: object
-      properties:
-        id:
-          type: string
-        expiresAt:
-          type: string
-        createdAt:
-          type: string
-        subLabel:
-          type: string
-        guildsCount:
-          type: integer
-        patreonUserID:
-          type: string
-        cancelled:
-          type: boolean
-        subInvalidated:
-          type: boolean
-    SubscriptionPayment:
-      type: object
-      properties:
-        id:
-          type: string
-        payerDiscordID:
-          type: string
-        amount:
-          type: integer
-        createdAt:
-          type: string
-        type:
-          type: string
-        transactionID:
-          type: string
-        details:
-          type: object
-        modDiscordID:
-          type: string
-        signupID:
-          type: string
-        payerEmail:
-          type: string
-        payerDiscordUsername:
-          type: string
     GuildSettings:
       type: object
       properties:
