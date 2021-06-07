@@ -248,7 +248,7 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/UserLeaderboardEntry"
-  /guilds/{guildId}/members/{memberId}:
+  /guilds/{guildId}/members/{userId}:
     get:
       tags:
         - Members
@@ -261,7 +261,7 @@ paths:
           required: true
           description: The ID of the guild of the member
         - in: path
-          name: memberId
+          name: userId
           schema:
             type: string
           required: true
@@ -285,7 +285,7 @@ paths:
           required: true
           description: The ID of the guild of the member
         - in: path
-          name: memberId
+          name: userId
           schema:
             type: string
           required: true
@@ -303,7 +303,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/GuildMember"
-  /guilds/{guildId}/members/{memberId}/events:
+  /guilds/{guildId}/members/{userId}/events:
     get:
       tags:
         - Members
@@ -316,7 +316,7 @@ paths:
           required: true
           description: The ID of the guild of the member
         - in: path
-          name: memberId
+          name: userId
           schema:
             type: string
           required: true
