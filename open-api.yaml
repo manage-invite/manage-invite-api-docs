@@ -229,6 +229,32 @@ paths:
                 items:
                   $ref: "#/components/schemas/GuildMember"
   /guilds/{guildId}/alerts/{inviteCount}:
+    post:
+      tags:
+        - Guilds
+      summary: Update a guild alert
+      parameters:
+        - in: path
+          name: guildId
+          schema:
+            type: string
+          required: true
+          description: The ID of the guild you want to update the alert of
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/GuildAlert"
+      responses:
+        "200":
+          description: The new guild alerts
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/GuildMember"
     delete:
       tags:
         - Guilds
