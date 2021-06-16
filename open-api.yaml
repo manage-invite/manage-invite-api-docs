@@ -181,6 +181,80 @@ paths:
                 type: array
                 items:
                   type: string
+  /guilds/{guildId}/alerts:
+    get:
+      tags:
+        - Guilds
+      summary: Returns the alerts of the guild
+      parameters:
+        - in: path
+          name: guildId
+          schema:
+            type: string
+          required: true
+          description: The ID of the guild you want to get the alerts of
+      responses:
+        "200":
+          description: The guild alerts
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/GuildAlert"
+    post:
+      tags:
+        - Guilds
+      summary: Create a new guild alert
+      parameters:
+        - in: path
+          name: guildId
+          schema:
+            type: string
+          required: true
+          description: The ID of the guild you want to add the alert to
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/GuildAlert"
+      responses:
+        "200":
+          description: The new guild alerts
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/GuildMember"
+  /guilds/{guildId}/alerts/{inviteCount}:
+    delete:
+      tags:
+        - Guilds
+      summary: Deletes a guild alert
+      parameters:
+        - in: path
+          name: guildId
+          schema:
+            type: string
+          required: true
+          description: The ID of the guild to delete the alert from
+        - in: path
+          name: inviteCount
+          schema:
+            type: string
+          required: true
+          description: The invite count of the alert you want to deleted (used as an ID)
+      responses:
+        "200":
+          description: The new guild alerts
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/GuildAlert"
   /guilds/{guildId}/storages:
     get:
       tags:
@@ -437,6 +511,21 @@ components:
         storageID:
           type: string
         joinFake:
+          type: boolean
+    GuildAlert:
+      type: object
+      properties:
+        guildID:
+          type: string
+        inviteCount:
+          type: integer
+        channelID:
+          type: string
+        message:
+          type: string
+        up:
+          type: boolean
+        down:
           type: boolean
     GuildMemberInvitesUpdate:
       type: object
