@@ -240,6 +240,12 @@ paths:
             type: string
           required: true
           description: The ID of the guild you want to update the alert of
+        - in: path
+          name: inviteCount
+          schema:
+            type: string
+          required: true
+          description: The invite count that needs to be raised to trigger the alert
       requestBody:
         required: true
         content:
